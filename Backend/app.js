@@ -3,9 +3,12 @@ const dotenv = require('dotenv')
 const mongoose= require('mongoose')
 const Blog= require('./model/blogModel')
 const app=express();
+const cors = require('cors')
 const PORT= process.env.PORT || 4000
 const URI = "mongodb://localhost:27017/CMS"
 // connect to mongoDB
+
+app.use(cors());
 
 try {
     mongoose.connect(URI, {
@@ -112,3 +115,4 @@ app.delete('/blogs/:id',async(req,res)=>{
 app.listen(PORT,()=>{
     console.log(`Server Running Port No: ${PORT}`);
 })
+
